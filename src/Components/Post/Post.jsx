@@ -1,4 +1,4 @@
-function Post() {
+function Post({post}) {
   return (
     <>
       <div className="post">
@@ -12,7 +12,7 @@ function Post() {
             <span className="postCategorie">Music</span>
             <span className="postCategorie">Travelling</span>
           </div>
-          <span className="postTitle">Lorem ipsum dolor sit.</span>
+          <span className="postTitle">{post.title}.</span>
           <hr />
           <span className="postDate">1 hr ago</span>
         </div>
