@@ -3,18 +3,21 @@ import Header from "../../Components/Header/Header";
 import Posts from "../../Components/Posts/Posts";
 import SideBar from "../../Components/SideBar/SideBar";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
-function HomePage() {
+export default function HomePage() {
   const [posts, setPosts] = useState([]);
+  const {search} = useLocation();
+  // console.log(location.search)
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("http://localhost:5000/api/posts/");
+      const res = await axios.get("http://localhost:5000/api/posts/"+search);
       // console.log(res);
-      setPosts(res.data);
+      setPosts(res.data.posts);
     };
     fetchPosts();
-  }, []);
+  }, [search]);
   return (
     <>
       <div className="homePage">
@@ -28,4 +31,4 @@ function HomePage() {
     </>
   );
 }
-export default HomePage;
+// export default HomePage;

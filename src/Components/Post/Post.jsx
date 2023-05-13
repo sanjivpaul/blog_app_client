@@ -1,24 +1,33 @@
-function Post({post}) {
+import { Link } from "react-router-dom";
+export default function Post({ post }) {
   return (
     <>
       <div className="post">
-        <img
-          src="https://source.unsplash.com/1600x900/?cars"
-          alt=""
-          className="postImg"
-        />
+        {post.photo && (
+          <img
+            // "https://source.unsplash.com/1600x900/?cars"
+            className="postImg"
+            src={post.photo}
+            alt=""
+          />
+        )}
         <div className="postInfo">
           <div className="postCategories">
-            <span className="postCategorie">Music</span>
-            <span className="postCategorie">Travelling</span>
+            {post.categories.map((c, index) => (
+              <span className="postCategorie" key={index}>{c}</span>
+            ))}
           </div>
-          <span className="postTitle">{post.title}.</span>
+          <Link className="link" to={`/post/${post._id}`}>
+            <span className="postTitle">{post.title}.</span>
+          </Link>
           <hr />
-          <span className="postDate">1 hr ago</span>
+          <span className="postDate">
+            {new Date(post.createdAt).toDateString()}
+          </span>
         </div>
-        <p className="postDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, nemo error aperiam amet facilis blanditiis illum quas velit mollitia porro qui at fuga vel tenetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quibusdam soluta suscipit quia dolores quasi incidunt qui mollitia saepe minus praesentium quod eum nobis quidem at natus, optio recusandae, labore, aperiam dicta sequi repudiandae impedit? Molestiae, veniam ea! Consequatur dignissimos non, provident fuga necessitatibus voluptatum pariatur! Odio temporibus amet consectetur molestiae quod dicta magni optio facilis assumenda. Sapiente qui eum modi. Corrupti odio, libero voluptas, magnam fugiat accusantium esse officiis rerum odit quis voluptatibus ipsam omnis cum. Ratione, sequi sit?</p>
+        <p className="postDesc">{post.desc}</p>
       </div>
     </>
   );
 }
-export default Post;
+// export default Post;

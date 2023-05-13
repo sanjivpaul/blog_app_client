@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  /* padding: 0; */
 }
 
 /* TOPBAR */
@@ -101,6 +102,7 @@
 /* HOME PAGE */
 .home {
   display: flex;
+  /* overflow-wrap: auto; */
 }
 
 /* POSTS */
