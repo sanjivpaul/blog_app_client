@@ -21,6 +21,7 @@ export default function RegisterPage() {
       // console.log(res);
       // if register susscessfully go to login page
       res.data && window.location.replace("/login")
+      // console.log(res.data.user);
     } catch (error) {
       // console.log(error);
       setError(true)
