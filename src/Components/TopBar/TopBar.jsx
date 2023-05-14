@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../../Context/context";
 function TopBar() {
-  const user = false;
+  const {user} = useContext(Context);
   return (
     <>
       <div className="top">

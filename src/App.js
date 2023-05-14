@@ -6,11 +6,13 @@ import SettingPage from "./pages/Settings/SettingPage";
 import LoginPage from "./pages/Login/loginpage";
 import RegisterPage from "./pages/Register/Registerpage";
 import { Routes, Route } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "./Context/context";
 
 function App() {
   // if user is exist then goto home page if not exist then go to register page 
   // terniary operator use here
-  const user = false;
+  const { user } = useContext(Context);
   return (
     <>
       <div className="App">

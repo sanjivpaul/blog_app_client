@@ -509,10 +509,10 @@
   cursor: pointer;
 }
 
-/* .loginButton:disabled {
+.loginButton:disabled {
   cursor: not-allowed;
-  background-color: rgb(225, 163, 163);
-} */
+  background-color: rgb(234, 190, 190);
+}
 
 .loginRegisterButton {
   position: absolute;
