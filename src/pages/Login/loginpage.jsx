@@ -26,7 +26,7 @@ export default function LoginPage() {
     }
   };
   // console.log(user);
-  console.log(isFetching);
+  // console.log(isFetching);
   return (
     <>
       <div className="login">

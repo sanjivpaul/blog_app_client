@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 export default function Post({ post }) {
+  // access local file from backend
+  const publicFolder = "http://localhost:5000/images/";
   return (
     <>
       <div className="post">
@@ -7,14 +9,16 @@ export default function Post({ post }) {
           <img
             // "https://source.unsplash.com/1600x900/?cars"
             className="postImg"
-            src={post.photo}
+            src={publicFolder + post.photo}
             alt=""
           />
         )}
         <div className="postInfo">
           <div className="postCategories">
             {post.categories.map((c, index) => (
-              <span className="postCategorie" key={index}>{c}</span>
+              <span className="postCategorie" key={index}>
+                {c}
+              </span>
             ))}
           </div>
           <Link className="link" to={`/post/${post._id}`}>
