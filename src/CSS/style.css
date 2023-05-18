@@ -252,7 +252,6 @@
   padding: 20px;
   /* padding-right: 0px; */
   padding-top: 0px;
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
 }
@@ -326,7 +325,7 @@
   border: none;
 }
 
-.singlePostDescEditModeInput:focus{
+.singlePostDescEditModeInput:focus {
   outline: none;
 }
 
@@ -336,7 +335,7 @@
   font-weight: 600;
 }
 
-.singlePostButton{
+.singlePostButton {
   width: 100px;
   background-color: teal;
   color: white;
