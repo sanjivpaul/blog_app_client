@@ -43,6 +43,7 @@
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .topList {
@@ -364,12 +365,16 @@
 .writePageForm {
   /* if child is absolute parent should be relative */
   position: relative;
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid rgb(39, 223, 61); */
 }
 
 .writePageFormGroup {
   margin-left: 150px;
   display: flex;
   align-items: center;
+  /* border: 2px solid red; */
 }
 
 .writePageIcon {
@@ -398,7 +403,7 @@
 
 .writePageText {
   font-size: 20px;
-  height: 100vh;
+  height: 50vh;
 }
 
 .writePageSubmit {
@@ -412,6 +417,15 @@
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+}
+
+.writePageCategories{
+  /* border: 2px solid blue; */
+  font-size: 20px;
+  margin-left: 150px;
+  padding: 20px;
+  border: none;
+  outline: none;
 }
 
 /* SETTINGS PAGES */
@@ -503,6 +517,16 @@
   padding: 10px;
   margin-top: 20px;
   cursor: pointer;
+}
+
+.settingsSubmit:hover {
+  background-color: rgb(55, 205, 205);
+}
+
+.success-msg{
+  color: green;
+  text-align: center;
+  margin-top: 20px;
 }
 
 /* LOGIN PAGE */

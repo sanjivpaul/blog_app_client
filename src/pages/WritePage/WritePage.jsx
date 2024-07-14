@@ -1,20 +1,25 @@
 import { useContext, useState } from "react";
 import axios from "axios";
-import { Context } from "../../Context/context";
+import { Context } from "../../context/Context";
 
 export default function WritePage() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [categories, setCategories] = useState([]);
   const [file, setFile] = useState(null);
   const { user } = useContext(Context);
+  console.log(user._id)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {
       username: user.username,
+      userId: user._id,
       title,
       desc,
+      categories,
     };
+    // console.log(newPost)
     // handle image
     if (file) {
       const data = new FormData();
@@ -72,6 +77,13 @@ export default function WritePage() {
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
+          <input
+            type="text"
+            placeholder="Categories separated with commas!"
+            className="writePageCategories"
+            autoFocus={true}
+            onChange={(e) => setCategories(e.target.value.split(","))}
+          />
           <div className="writePageFormGroup">
             <textarea
               placeholder="Tell your story..."
@@ -80,6 +92,7 @@ export default function WritePage() {
               onChange={(e) => setDesc(e.target.value)}
             ></textarea>
           </div>
+
           <button className="writePageSubmit" type="submit">
             Publish
           </button>

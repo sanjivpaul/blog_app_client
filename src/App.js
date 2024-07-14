@@ -7,7 +7,7 @@ import LoginPage from "./pages/Login/loginpage";
 import RegisterPage from "./pages/Register/Registerpage";
 import { Routes, Route } from "react-router-dom";
 import { useContext } from "react";
-import { Context } from "./Context/context";
+import { Context } from "./context/Context";
 
 function App() {
   // if user is exist then goto home page if not exist then go to register page 

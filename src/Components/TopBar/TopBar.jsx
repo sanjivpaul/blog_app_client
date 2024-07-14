@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../../Context/context";
+import { Context } from "../../context/Context";
 function TopBar() {
   const { user, dispatch } = useContext(Context);
+  const publicFolder = "http://localhost:5000/images/";
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -47,11 +48,13 @@ function TopBar() {
         <div className="topRight">
           {/* if user exist show profile pic on top right */}
           {user ? (
-            <img
-              className="topImg"
-              src={user.profilePic}
-              alt=""
-            />
+            <Link to="/setting">
+              <img
+                className="topImg"
+                src={publicFolder + user.profilePic}
+                alt=""
+              />
+            </Link>
           ) : (
             // if user is not exist then they can login or register
             <ul className="topList">

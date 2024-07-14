@@ -2,20 +2,38 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Context } from "../../Context/context";
+import { Context } from "../../context/Context";
 
 export default function SinglePost() {
   const location = useLocation();
-  // console.log(location.pathname.split("/")[2]);
+  // console.log("path",location.pathname.split("/")[2]);
   // path will return the id of the post and we can fetch the post by using _id
   const path = location.pathname.split("/")[2];
+  console.log(path);
   const [post, setPost] = useState({});
   const publicFolder = "http://localhost:5000/images/";
   const { user } = useContext(Context);
   // this states are for edit posts
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  // const [postUsername, setPostUsername] = useState("");
   const [editMode, setEditMode] = useState(false);
+  console.log("userId",user._id)
+  console.log("postId", post.userId)
+
+  // const allPost = `http://localhost:5000/api/posts/usernameupdate/${path}`;
+
+  // const updatePostUsername = async ()=>{
+  //   try {
+  //     if(post.userId === user._id){
+  //       const res = await axios.put("http://localhost:5000/api/posts/" + path);
+  //       console.log("username",res.username)
+  //     }
+  //   } catch (error) {
+      
+  //   }
+  // }
+ 
 
   useEffect(() => {
     const getPost = async () => {
@@ -24,8 +42,10 @@ export default function SinglePost() {
       setPost(res.data.post);
       setTitle(res.data.post.title);
       setDesc(res.data.post.desc);
+      // console.log(res.data.post)
     };
     getPost();
+    // updatePostUsername();
   }, [path]);
   // when ever path is changes fire this useEffect
 
@@ -38,7 +58,7 @@ export default function SinglePost() {
         },
       });
       window.location.replace("/");
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const handleUpdate = async () => {
@@ -48,10 +68,16 @@ export default function SinglePost() {
         title,
         desc,
       });
+
       // window.location.reload();
       setEditMode(false);
-    } catch (error) {}
+
+    } catch (error) {
+
+    }
   };
+
+
   return (
     <>
       <div className="singlePost">
@@ -73,14 +99,14 @@ export default function SinglePost() {
                 value={title}
                 className="singlePostTitleEditModeInput"
                 onChange={(e) => setTitle(e.target.value)}
-                // autoFocus
+              // autoFocus
               />
             ) : (
               // if its not update mode write this h1 text
               <h1 className="singlePostTitle">
                 {title}
                 {/* if post username is same as login username then edit options are visible */}
-                {post.username === user?.username && (
+                {post.userId === user?._id && (
                   <div className="singlePostEdit">
                     <i
                       className="singlePostIcon fa-regular fa-pen-to-square"
@@ -99,6 +125,7 @@ export default function SinglePost() {
             <span className="singlePostAuthor">
               Author:
               <Link className="link" to={`/?user=${post.username}`}>
+                {/* update post username */}
                 <b>{post.username}</b>
               </Link>
             </span>

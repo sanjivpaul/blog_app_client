@@ -1,12 +1,12 @@
 import { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../../Context/context";
+import { Context } from "../../context/Context";
 import axios from "axios";
 
 export default function LoginPage() {
   const userRef = useRef();
   const passwordRef = useRef();
-  const {user, dispatch, isFetching } = useContext(Context);
+  const { dispatch, isFetching } = useContext(Context);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
