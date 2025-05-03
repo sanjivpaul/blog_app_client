@@ -6,7 +6,7 @@ function TopBar() {
   // const { user, dispatch } = useContext(Context);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  const publicFolder = "http://localhost:5000/images/";
+  const publicFolder = "http://localhost:5001/images/";
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });

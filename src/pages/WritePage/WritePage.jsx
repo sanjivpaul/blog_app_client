@@ -31,7 +31,7 @@ export default function WritePage() {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post("http://localhost:5000/api/upload", data);
+        await axios.post("http://localhost:5001/api/upload", data);
         // console.log(data);
       } catch (error) {
         console.log(error);
@@ -39,7 +39,7 @@ export default function WritePage() {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/posts", newPost);
+      const res = await axios.post("http://localhost:5001/api/posts", newPost);
       // console.log(res.data.savedPost._id);
       window.location.replace("/post/" + res.data.savedPost._id);
     } catch (error) {

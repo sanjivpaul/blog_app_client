@@ -11,21 +11,21 @@ export default function RegisterPage() {
   const handleSubmit = async (e) => {
     // if we dont use preventDefault then all the time when we click on register button page will refresh all the time
     e.preventDefault();
-    setError(false)
+    setError(false);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register/", {
+      const res = await axios.post("http://localhost:5001/api/auth/register/", {
         username,
         email,
         password,
       });
       // console.log(res);
       // if register susscessfully go to login page
-      res.data && window.location.replace("/login")
+      res.data && window.location.replace("/login");
       // console.log(res.data.user);
     } catch (error) {
       // console.log(error);
-      setError(true)
+      setError(true);
     }
   };
 
@@ -68,7 +68,11 @@ export default function RegisterPage() {
             Login
           </Link>
         </button>
-        {error && <span style={{color:"red", marginTop:"15px"}}>Something went wrong!</span>}
+        {error && (
+          <span style={{ color: "red", marginTop: "15px" }}>
+            Something went wrong!
+          </span>
+        )}
       </div>
     </>
   );

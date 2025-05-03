@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 export default function Post({ post }) {
   // access local file from backend
-  const publicFolder = "http://localhost:5000/images/";
+  const publicFolder = "http://localhost:5001/images/";
   return (
     <>
       <div className="post">

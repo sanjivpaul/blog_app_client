@@ -15,11 +15,11 @@ export default function SettingPage() {
   const [password, setPassword] = useState("");
   // const [postUsername, setPostUsername] = useState("");
   const [success, setSuccess] = useState(false);
-  const publicFolder = "http://localhost:5000/images/";
+  const publicFolder = "http://localhost:5001/images/";
 
-  // const allPost = `http://localhost:5000/api/posts/usernameupdate/${path}`;
+  // const allPost = `http://localhost:5001/api/posts/usernameupdate/${path}`;
 
-  // const postUser = axios.put("http://localhost:5000/api/users/" + user._id);
+  // const postUser = axios.put("http://localhost:5001/api/users/" + user._id);
   // console.log("userAllPost",postUser)
   // const allPost = `http://localhost:3000/?user=${username}`
   // const getAllPostbyId = async ()=>{
@@ -63,7 +63,7 @@ export default function SettingPage() {
       data.append("file", file);
       updatedUser.profilePic = filename;
       try {
-        await axios.post("http://localhost:5000/api/upload", data);
+        await axios.post("http://localhost:5001/api/upload", data);
       } catch (error) {
         alert(error);
         console.log(error);
@@ -72,7 +72,7 @@ export default function SettingPage() {
     // update other details
     try {
       const res = await axios.put(
-        "http://localhost:5000/api/users/" + user._id,
+        "http://localhost:5001/api/users/" + user._id,
         updatedUser
       );
       setSuccess(true);

@@ -12,7 +12,7 @@ export default function SinglePost() {
   const path = location.pathname.split("/")[2];
   console.log(path);
   const [post, setPost] = useState({});
-  const publicFolder = "http://localhost:5000/images/";
+  const publicFolder = "http://localhost:5001/images/";
   // const { user } = useContext(Context);
   const user = useSelector((state) => state.auth.user);
   // this states are for edit posts
@@ -23,12 +23,12 @@ export default function SinglePost() {
   console.log("userId", user._id);
   console.log("postId", post.userId);
 
-  // const allPost = `http://localhost:5000/api/posts/usernameupdate/${path}`;
+  // const allPost = `http://localhost:5001/api/posts/usernameupdate/${path}`;
 
   // const updatePostUsername = async ()=>{
   //   try {
   //     if(post.userId === user._id){
-  //       const res = await axios.put("http://localhost:5000/api/posts/" + path);
+  //       const res = await axios.put("http://localhost:5001/api/posts/" + path);
   //       console.log("username",res.username)
   //     }
   //   } catch (error) {
@@ -38,7 +38,7 @@ export default function SinglePost() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("http://localhost:5000/api/posts/" + path);
+      const res = await axios.get("http://localhost:5001/api/posts/" + path);
       // console.log(res.data.post);
       setPost(res.data.post);
       setTitle(res.data.post.title);
@@ -53,7 +53,7 @@ export default function SinglePost() {
   // delete function
   const handleDelete = async () => {
     try {
-      await axios.delete("http://localhost:5000/api/posts/" + path, {
+      await axios.delete("http://localhost:5001/api/posts/" + path, {
         data: {
           username: user.username,
         },
@@ -64,7 +64,7 @@ export default function SinglePost() {
 
   const handleUpdate = async () => {
     try {
-      await axios.put("http://localhost:5000/api/posts/" + path, {
+      await axios.put("http://localhost:5001/api/posts/" + path, {
         username: user.username,
         title,
         desc,

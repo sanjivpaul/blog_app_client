@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 // import { Context } from "../../context/Context";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import { loginFailure, loginStart, loginSuccess } from "../../Redux/AuthSlice";
 
 export default function LoginPage() {
   const userRef = useRef();
@@ -15,18 +16,22 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // start
-    dispatch({ type: "LOGIN_START" });
+    // dispatch({ type: "LOGIN_START" });
+    dispatch(loginStart());
+
     // api calling
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post("http://localhost:5001/api/auth/login", {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });
       // fetching successful
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.others });
+      // dispatch({ type: "LOGIN_SUCCESS", payload: res.data.others });
+      dispatch(loginSuccess(res.data.others));
     } catch (error) {
       // login failure
-      dispatch({ type: "LOGIN_FAILURE" });
+      // dispatch({ type: "LOGIN_FAILURE" });
+      dispatch(loginFailure());
     }
   };
   // console.log(user);
