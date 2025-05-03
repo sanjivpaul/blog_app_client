@@ -1,11 +1,14 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import SideBar from "../../Components/SideBar/SideBar";
-import { Context } from "../../context/Context";
+// import { Context } from "../../context/Context";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 // import { useLocation } from "react-router-dom";
 
 export default function SettingPage() {
-  const { user, dispatch } = useContext(Context);
+  // const { user, dispatch } = useContext(Context);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
   const [file, setFile] = useState(null);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -28,18 +31,17 @@ export default function SettingPage() {
 
   // const location = useLocation();
   // const path = location.pathname.split("/")[2];
-  console.log(user._id)
+  console.log(user._id);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // at the begining dispacth
-    dispatch({ type: "UPDATE_START" })
+    dispatch({ type: "UPDATE_START" });
     const updatedUser = {
       userId: user._id,
       username,
       email,
       password,
-
     };
 
     // post username update
@@ -69,21 +71,22 @@ export default function SettingPage() {
     }
     // update other details
     try {
-      const res = await axios.put("http://localhost:5000/api/users/" + user._id, updatedUser);
+      const res = await axios.put(
+        "http://localhost:5000/api/users/" + user._id,
+        updatedUser
+      );
       setSuccess(true);
       // at success update
       // console.log(res.data);
-      dispatch({ type: "UPDATE_SUCCESS", payload: res.data.updatedUser })
+      dispatch({ type: "UPDATE_SUCCESS", payload: res.data.updatedUser });
 
       // update username code
-
     } catch (error) {
       // at failure update
-      dispatch({ type: "UPDATE_FAILURE" })
+      dispatch({ type: "UPDATE_FAILURE" });
     }
     // console.log(updatedUser);
   };
-
 
   return (
     <>
@@ -97,10 +100,14 @@ export default function SettingPage() {
             <label>Profile Picture</label>
 
             <div className="settingsPP">
-
               <img
-                src={file ? URL.createObjectURL(file) : publicFolder + user.profilePic}
-                alt="" />
+                src={
+                  file
+                    ? URL.createObjectURL(file)
+                    : publicFolder + user.profilePic
+                }
+                alt=""
+              />
 
               <label htmlFor="fileInput">
                 <i className="settingsPPIcon fa-regular fa-user"></i>
@@ -109,7 +116,8 @@ export default function SettingPage() {
                 type="file"
                 id="fileInput"
                 style={{ display: "none" }}
-                onChange={(e) => setFile(e.target.files[0])} />
+                onChange={(e) => setFile(e.target.files[0])}
+              />
             </div>
             <div className="settingsAllInputs">
               <label>Username</label>
@@ -124,10 +132,17 @@ export default function SettingPage() {
                 type="email"
                 placeholder={user.email}
                 onChange={(e) => setEmail(e.target.value)}
-                autoComplete="email" />
+                autoComplete="email"
+              />
               <label>Password</label>
-              <input type="password" onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
-              <button className="settingsSubmit" type="submit">Update</button>
+              <input
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete="current-password"
+              />
+              <button className="settingsSubmit" type="submit">
+                Update
+              </button>
             </div>
             {success && (
               <span className="success-msg">Profile updated successfully</span>

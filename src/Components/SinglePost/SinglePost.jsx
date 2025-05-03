@@ -1,8 +1,9 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Context } from "../../context/Context";
+// import { Context } from "../../context/Context";
+import { useSelector } from "react-redux";
 
 export default function SinglePost() {
   const location = useLocation();
@@ -12,14 +13,15 @@ export default function SinglePost() {
   console.log(path);
   const [post, setPost] = useState({});
   const publicFolder = "http://localhost:5000/images/";
-  const { user } = useContext(Context);
+  // const { user } = useContext(Context);
+  const user = useSelector((state) => state.auth.user);
   // this states are for edit posts
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   // const [postUsername, setPostUsername] = useState("");
   const [editMode, setEditMode] = useState(false);
-  console.log("userId",user._id)
-  console.log("postId", post.userId)
+  console.log("userId", user._id);
+  console.log("postId", post.userId);
 
   // const allPost = `http://localhost:5000/api/posts/usernameupdate/${path}`;
 
@@ -30,10 +32,9 @@ export default function SinglePost() {
   //       console.log("username",res.username)
   //     }
   //   } catch (error) {
-      
+
   //   }
   // }
- 
 
   useEffect(() => {
     const getPost = async () => {
@@ -58,7 +59,7 @@ export default function SinglePost() {
         },
       });
       window.location.replace("/");
-    } catch (error) { }
+    } catch (error) {}
   };
 
   const handleUpdate = async () => {
@@ -71,12 +72,8 @@ export default function SinglePost() {
 
       // window.location.reload();
       setEditMode(false);
-
-    } catch (error) {
-
-    }
+    } catch (error) {}
   };
-
 
   return (
     <>
@@ -99,7 +96,7 @@ export default function SinglePost() {
                 value={title}
                 className="singlePostTitleEditModeInput"
                 onChange={(e) => setTitle(e.target.value)}
-              // autoFocus
+                // autoFocus
               />
             ) : (
               // if its not update mode write this h1 text

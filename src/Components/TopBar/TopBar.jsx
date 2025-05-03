@@ -1,8 +1,11 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../../context/Context";
+// import { Context } from "../../context/Context";
+import { useDispatch, useSelector } from "react-redux";
 function TopBar() {
-  const { user, dispatch } = useContext(Context);
+  // const { user, dispatch } = useContext(Context);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
   const publicFolder = "http://localhost:5000/images/";
 
   const handleLogout = () => {

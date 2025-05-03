@@ -1,12 +1,16 @@
-import { useContext, useRef } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../../context/Context";
+// import { Context } from "../../context/Context";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function LoginPage() {
   const userRef = useRef();
   const passwordRef = useRef();
-  const { dispatch, isFetching } = useContext(Context);
+  // const { dispatch, isFetching } = useContext(Context);
+
+  const dispatch = useDispatch();
+  const isFetching = useSelector((state) => state.isFetching);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
