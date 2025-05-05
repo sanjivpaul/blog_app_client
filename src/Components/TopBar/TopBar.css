@@ -1,0 +1,93 @@
+.register-button{
+    border: none;
+    background: none;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+}
+.modal-container{
+
+}
+
+.modal-button-container{
+    margin-top: 2.5rem;
+}
+
+
+
+.google-btn, .email-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .google-btn {
+    background-color: #4285F4;
+    color: white;
+  }
+  
+  .email-btn {
+    background-color: #333;
+    color: white;
+  }
+
+  /* register with email */
+  .register-with-email{
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: sans-serif
+  }
+  .register-with-email-form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px; 
+    margin-top: 2rem;
+  }
+
+  .input-field{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px,
+  }
+
+  .register-with-email-submit-btn{
+    padding:10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .all-signin-btn{
+    background-color: transparent;
+    border: none;
+    align-self: center;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+
+  .forget{
+    margin-top: 3rem;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  .modal-footer {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  .modal-footer a {
+    color: #0066cc;
+    text-decoration: underline;
+  }
