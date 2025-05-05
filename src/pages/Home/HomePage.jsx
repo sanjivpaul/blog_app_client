@@ -4,6 +4,7 @@ import Posts from "../../Components/Posts/Posts";
 import SideBar from "../../Components/SideBar/SideBar";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import "./HomePage.css";
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);

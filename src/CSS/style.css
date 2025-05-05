@@ -100,12 +100,6 @@
   object-fit: cover;
 }
 
-/* HOME PAGE */
-.home {
-  display: flex;
-  /* overflow-wrap: auto; */
-}
-
 /* POSTS */
 .posts {
   flex: 9;

@@ -1,0 +1,10 @@
+.homePage {
+  padding: 0 10rem;
+}
+
+/* HOME PAGE */
+.home {
+  display: flex;
+  /* overflow-wrap: auto; */
+  /* padding: 0 10rem; */
+}
