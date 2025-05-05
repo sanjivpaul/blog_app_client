@@ -116,7 +116,7 @@
 
 /* SIDEBAR */
 .sidebar {
-  flex: 3;
+  flex: 1;
   margin: 20;
   padding-bottom: 30px;
   background-color: #fbfbfb;
@@ -419,7 +419,7 @@
   cursor: pointer;
 }
 
-.writePageCategories{
+.writePageCategories {
   /* border: 2px solid blue; */
   font-size: 20px;
   margin-left: 150px;
@@ -432,12 +432,22 @@
 
 .settings {
   display: flex;
+  padding: 0 40px; /* horizontal space on left & right */
+  gap: 80px; /* space between form and sidebar */
+  margin-top: 40px;
 }
 
 .settingsWrapper {
-  flex: 9;
-  padding: 20px;
+  flex: 2;
+  padding: 40px;
+  /* margin-left: 80px; */
   /* padding-top: 0px; */
+}
+
+.userDetailsBanner {
+  height: 100px;
+  /* background-color: teal; */
+  padding: 20;
 }
 
 .settingsTitle {
@@ -523,7 +533,7 @@
   background-color: rgb(55, 205, 205);
 }
 
-.success-msg{
+.success-msg {
   color: green;
   text-align: center;
   margin-top: 20px;

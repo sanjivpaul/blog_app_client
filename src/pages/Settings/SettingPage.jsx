@@ -4,7 +4,7 @@ import SideBar from "../../Components/SideBar/SideBar";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 // import { useLocation } from "react-router-dom";
-
+import "./TopBar.css";
 export default function SettingPage() {
   // const { user, dispatch } = useContext(Context);
   const dispatch = useDispatch();
@@ -13,6 +13,8 @@ export default function SettingPage() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [activeTab, setActiveTab] = useState("home");
+
   // const [postUsername, setPostUsername] = useState("");
   const [success, setSuccess] = useState(false);
   const publicFolder = "http://localhost:5001/images/";
@@ -92,6 +94,27 @@ export default function SettingPage() {
     <>
       <div className="settings">
         <div className="settingsWrapper">
+          <div className="userDetailsBanner">
+            <h2 style={{ fontSize: 35, fontFamily: "sans-serif" }}>
+              {user.username}
+            </h2>
+          </div>
+
+          <div className="tab-bar">
+            <div
+              className={`tab ${activeTab === "home" ? "active" : ""}`}
+              onClick={() => setActiveTab("home")}
+            >
+              Home
+            </div>
+            <div
+              className={`tab ${activeTab === "profile" ? "active" : ""}`}
+              onClick={() => setActiveTab("profile")}
+            >
+              Profile
+            </div>
+          </div>
+
           <div className="settingsTitle">
             <span className="settingsUpdateTitle">Update Your Account</span>
             <span className="settingsDeleteTitle">Delete Account</span>
