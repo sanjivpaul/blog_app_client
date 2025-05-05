@@ -1,5 +1,4 @@
 import { useState } from "react";
-import SideBar from "../../Components/SideBar/SideBar";
 // import { Context } from "../../context/Context";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +13,7 @@ export default function SettingPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [activeTab, setActiveTab] = useState("home");
+  const [editProfile, setEditProfile] = useState(false);
 
   // const [postUsername, setPostUsername] = useState("");
   const [success, setSuccess] = useState(false);
@@ -100,79 +100,147 @@ export default function SettingPage() {
             </h2>
           </div>
 
-          <div className="tab-bar">
+          {editProfile ? (
+            <div className="tab-bar">
+              <div
+                className={`tab ${activeTab === "account" ? "active" : ""}`}
+                onClick={() => setActiveTab("account")}
+              >
+                Account
+              </div>
+              {/* <div
+            className={`tab ${activeTab === "profile" ? "active" : ""}`}
+            onClick={() => setActiveTab("profile")}
+          >
+            Profile
+          </div> */}
+            </div>
+          ) : (
+            <div className="tab-bar">
+              <div
+                className={`tab ${activeTab === "home" ? "active" : ""}`}
+                onClick={() => setActiveTab("home")}
+              >
+                Home
+              </div>
+              <div
+                className={`tab ${activeTab === "profile" ? "active" : ""}`}
+                onClick={() => setActiveTab("profile")}
+              >
+                Profile
+              </div>
+            </div>
+          )}
+
+          {activeTab === "home" && (
             <div
-              className={`tab ${activeTab === "home" ? "active" : ""}`}
-              onClick={() => setActiveTab("home")}
-            >
-              Home
-            </div>
+              style={{ width: "70%", height: 100, background: "teal" }}
+            ></div>
+          )}
+          {activeTab === "profile" && (
             <div
-              className={`tab ${activeTab === "profile" ? "active" : ""}`}
-              onClick={() => setActiveTab("profile")}
+              style={{
+                width: "70%",
+                height: 100,
+                background: "#CCC",
+                margin: 30,
+
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+
+                padding: 50,
+              }}
             >
-              Profile
+              <h3>Tell the worl more about you</h3>
+              pHere’s where you can share more about yourself: your history,
+              work experience, accomplishments, interests, dreams, and more. You
+              can even add images and use rich text to personalize your bio.
             </div>
-          </div>
+          )}
 
-          <div className="settingsTitle">
-            <span className="settingsUpdateTitle">Update Your Account</span>
-            <span className="settingsDeleteTitle">Delete Account</span>
-          </div>
-          <form className="settingsForm" onSubmit={handleSubmit}>
-            <label>Profile Picture</label>
+          {activeTab === "account" && (
+            <>
+              <div className="settingsTitle">
+                <span className="settingsUpdateTitle">Update Your Account</span>
+                <span className="settingsDeleteTitle">Delete Account</span>
+              </div>
+              <form className="settingsForm" onSubmit={handleSubmit}>
+                <label>Profile Picture</label>
 
-            <div className="settingsPP">
-              <img
-                src={
-                  file
-                    ? URL.createObjectURL(file)
-                    : publicFolder + user.profilePic
-                }
-                alt=""
-              />
+                <div className="settingsPP">
+                  <img
+                    src={
+                      file
+                        ? URL.createObjectURL(file)
+                        : publicFolder + user.profilePic
+                    }
+                    alt=""
+                  />
 
-              <label htmlFor="fileInput">
-                <i className="settingsPPIcon fa-regular fa-user"></i>
-              </label>
-              <input
-                type="file"
-                id="fileInput"
-                style={{ display: "none" }}
-                onChange={(e) => setFile(e.target.files[0])}
-              />
-            </div>
-            <div className="settingsAllInputs">
-              <label>Username</label>
-              <input
-                type="text"
-                placeholder={user.username}
-                onChange={(e) => setUsername(e.target.value)}
-                autoComplete="username"
-              />
-              <label>Email</label>
-              <input
-                type="email"
-                placeholder={user.email}
-                onChange={(e) => setEmail(e.target.value)}
-                autoComplete="email"
-              />
-              <label>Password</label>
-              <input
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="current-password"
-              />
-              <button className="settingsSubmit" type="submit">
-                Update
-              </button>
-            </div>
-            {success && (
-              <span className="success-msg">Profile updated successfully</span>
-            )}
-          </form>
+                  <label htmlFor="fileInput">
+                    <i className="settingsPPIcon fa-regular fa-user"></i>
+                  </label>
+                  <input
+                    type="file"
+                    id="fileInput"
+                    style={{ display: "none" }}
+                    onChange={(e) => setFile(e.target.files[0])}
+                  />
+                </div>
+                <div className="settingsAllInputs">
+                  <label>Username</label>
+                  <input
+                    type="text"
+                    placeholder={user.username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    autoComplete="username"
+                  />
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    placeholder={user.email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    autoComplete="email"
+                  />
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    autoComplete="current-password"
+                  />
+                  <button className="settingsSubmit" type="submit">
+                    Update
+                  </button>
+                </div>
+                {success && (
+                  <span className="success-msg">
+                    Profile updated successfully
+                  </span>
+                )}
+              </form>
+            </>
+          )}
         </div>
-        <SideBar />
+
+        <div className="customSidebar">
+          <img
+            src={publicFolder + user.profilePic}
+            alt="Profile"
+            className="sidebarProfilePic"
+          />
+          <h3 className="sidebarUsername">{user.username}</h3>
+          <button
+            onClick={() => {
+              setEditProfile(true);
+              setActiveTab("account");
+            }}
+            className="editProfileBtn"
+          >
+            Edit Profile
+          </button>
+        </div>
       </div>
     </>
   );

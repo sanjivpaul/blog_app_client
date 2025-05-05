@@ -25,3 +25,48 @@
   border-bottom: 1px solid #007bff;
   color: #007bff;
 }
+
+/* side bar profile */
+.customSidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  width: 300px;
+  /* background-color: #f4f4f4; */
+  /* background-color: tomato; */
+  height: 100vh;
+  border-left: 0.5px solid #ccc;
+  /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
+  /* margin-right: 20; */
+}
+
+.sidebarProfilePic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.sidebarUsername {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.editProfileBtn {
+  padding: 10px 20px;
+  /* background-color: teal; */
+  background: transparent;
+  /* color: white; */
+  color: #007777;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.editProfileBtn:hover {
+  /* background-color: #007777; */
+  color: #007777;
+}

@@ -432,8 +432,8 @@
 
 .settings {
   display: flex;
-  padding: 0 40px; /* horizontal space on left & right */
-  gap: 80px; /* space between form and sidebar */
+  padding: 0 10rem; /* horizontal space on left & right */
+  gap: 0px; /* space between form and sidebar */
   margin-top: 40px;
 }
 
@@ -442,6 +442,7 @@
   padding: 40px;
   /* margin-left: 80px; */
   /* padding-top: 0px; */
+  /* background-color: teal; */
 }
 
 .userDetailsBanner {
