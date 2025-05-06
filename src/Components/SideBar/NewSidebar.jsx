@@ -53,6 +53,28 @@ function NewSidebar() {
           ))}
         </ul>
       </div>
+
+      {/* Footer */}
+      <div className="sidebarFooter">
+        <ul className="footerLinks">
+          {[
+            "Help",
+            "Status",
+            "About",
+            "Careers",
+            "Press",
+            "Blog",
+            "Privacy",
+            "Rules",
+            "Terms",
+            "Text to speech",
+          ].map((item, index) => (
+            <li key={index} className="footerLinkItem">
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

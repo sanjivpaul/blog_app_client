@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import "./HomePage.css";
 import NewSidebar from "../../Components/SideBar/NewSidebar";
 import TopTabBar from "../../Components/TopTabBar/TopTabBar";
+import dummyPosts from "../../dummy/DummyPost";
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
@@ -30,7 +31,7 @@ export default function HomePage() {
         <div className="home">
           {/* pass posts as props */}
 
-          <Posts posts={posts} />
+          <Posts posts={dummyPosts} />
           {/* <SideBar /> */}
           <NewSidebar />
         </div>

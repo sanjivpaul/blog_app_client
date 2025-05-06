@@ -1,9 +1,8 @@
-.newSidebar {
+/* .newSidebar {
     padding: 20px;
     border-left: 1px solid #ddd;
     width: 300px;
     background-color: #fff;
-    /* border-radius: 8px; */
   }
   
   .sidebarSection {
@@ -60,5 +59,101 @@
     padding: 4px 8px;
     border-radius: 4px;
     cursor: pointer;
+  }
+   */
+
+
+   .newSidebar {
+    position: sticky;
+    top: 80px; /* adjust depending on your header */
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 20px;
+    border-left: 1px solid #eee;
+    overflow: hidden;
+  }
+  
+  /* Scrollable middle content */
+  .sidebarContent {
+    overflow-y: auto;
+    flex-grow: 1;
+    margin-bottom: 20px;
+  }
+  
+  /* Sections */
+  .sidebarSection {
+    margin-bottom: 24px;
+  }
+  
+  /* Message Box */
+  .messageDialog h3 {
+    margin-bottom: 8px;
+  }
+  .startWritingBtn {
+    background: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Topics */
+  .topicList {
+    list-style: none;
+    padding: 0;
+  }
+  .topicItem {
+    margin-bottom: 8px;
+    cursor: pointer;
+    color: #007bff;
+  }
+  
+  /* Users */
+  .userList {
+    list-style: none;
+    padding: 0;
+  }
+  .userItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .userAvatar {
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .userName {
+    flex-grow: 1;
+  }
+  .followBtn {
+    background: transparent;
+    border: 1px solid #007bff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  /* Footer */
+  .sidebarFooter {
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+  }
+  .footerLinks {
+    list-style: none;
+    padding: 0;
+    font-size: 14px;
+    color: #666;
+  }
+  .footerLinkItem {
+    margin-bottom: 6px;
+    cursor: pointer;
+  }
+  .footerLinkItem:hover {
+    text-decoration: underline;
   }
   
