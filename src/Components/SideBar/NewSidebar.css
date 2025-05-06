@@ -1,0 +1,64 @@
+.newSidebar {
+    padding: 20px;
+    border-left: 1px solid #ddd;
+    width: 300px;
+    background-color: #fff;
+    /* border-radius: 8px; */
+  }
+  
+  .sidebarSection {
+    margin-bottom: 20px;
+  }
+  
+  .messageDialog {
+    background-color: #f0f8ff;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+  }
+  
+  .startWritingBtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .topicList, .userList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .topicItem, .userItem {
+    margin-bottom: 10px;
+  }
+  
+  .userItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .userAvatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .userName {
+    flex: 1;
+  }
+  
+  .followBtn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  

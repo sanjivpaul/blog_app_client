@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import Header from "../../Components/Header/Header";
+// import Header from "../../Components/Header/Header";
 import Posts from "../../Components/Posts/Posts";
-import SideBar from "../../Components/SideBar/SideBar";
+// import SideBar from "../../Components/SideBar/SideBar";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import "./HomePage.css";
+import NewSidebar from "../../Components/SideBar/NewSidebar";
+import TopTabBar from "../../Components/TopTabBar/TopTabBar";
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
@@ -22,11 +24,15 @@ export default function HomePage() {
   return (
     <>
       <div className="homePage">
-        <Header />
+        {/* <Header /> */}
+        <TopTabBar />
+
         <div className="home">
           {/* pass posts as props */}
+
           <Posts posts={posts} />
-          <SideBar />
+          {/* <SideBar /> */}
+          <NewSidebar />
         </div>
       </div>
     </>
