@@ -14,6 +14,7 @@
   align-items: center;
   font-family: "Josefin Sans", sans-serif;
   z-index: 999;
+  margin-bottom: 0.5px solid #ccc;
 }
 .topLeft,
 .topRight {

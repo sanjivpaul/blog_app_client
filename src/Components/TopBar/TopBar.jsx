@@ -5,7 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import Modal from "../Modals/Modal";
 import "./TopBar.css";
-import { logout } from "../../Redux/AuthSlice";
+import {
+  loginFailure,
+  loginStart,
+  loginSuccess,
+  logout,
+} from "../../Redux/AuthSlice";
+import axios from "axios";
+import { useRef } from "react";
 function TopBar() {
   // const { user, dispatch } = useContext(Context);
   const dispatch = useDispatch();
@@ -16,6 +23,14 @@ function TopBar() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [step, setStep] = useState(1);
 
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
+  const userRef = useRef();
+  const passwordRef = useRef();
+
   const handleLogout = () => {
     // dispatch({ type: "LOGOUT" });
     dispatch(logout());
@@ -25,6 +40,49 @@ function TopBar() {
     setIsModalOpen(false);
     setIsLoginModalOpen(false);
     setStep(1); // Reset step when modal closes
+  };
+
+  const handleSubmit = async (e) => {
+    // if we dont use preventDefault then all the time when we click on register button page will refresh all the time
+    e.preventDefault();
+    setError(false);
+
+    try {
+      const res = await axios.post("http://localhost:5001/api/auth/register/", {
+        username,
+        email,
+        password,
+      });
+      // console.log(res);
+      // if register susscessfully go to login page
+      res.data && window.location.replace("/login");
+      // console.log(res.data.user);
+    } catch (error) {
+      // console.log(error);
+      setError(true);
+    }
+  };
+
+  const handleSubmitLogin = async (e) => {
+    e.preventDefault();
+    // start
+    // dispatch({ type: "LOGIN_START" });
+    dispatch(loginStart());
+
+    // api calling
+    try {
+      const res = await axios.post("http://localhost:5001/api/auth/login", {
+        username: userRef.current.value,
+        password: passwordRef.current.value,
+      });
+      // fetching successful
+      // dispatch({ type: "LOGIN_SUCCESS", payload: res.data.others });
+      dispatch(loginSuccess(res.data.others));
+    } catch (error) {
+      // login failure
+      // dispatch({ type: "LOGIN_FAILURE" });
+      dispatch(loginFailure());
+    }
   };
 
   return (
@@ -121,23 +179,32 @@ function TopBar() {
           {step === 2 && (
             <div className="register-with-email">
               <h2>Register with Email</h2>
-              <form className="register-with-email-form">
+              <form
+                className="register-with-email-form"
+                onSubmit={handleSubmit}
+              >
                 <input
                   className="input-field"
                   type="text"
                   placeholder="Username"
+                  autoComplete="username"
+                  onChange={(e) => setUsername(e.target.value)}
                 />
                 <br />
                 <input
                   className="input-field"
                   type="email"
                   placeholder="Email or Phone"
+                  autoComplete="email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <br />
                 <input
                   className="input-field"
                   type="password"
                   placeholder="Password"
+                  autoComplete="current-password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <br />
                 <button
@@ -147,6 +214,12 @@ function TopBar() {
                   Submit
                 </button>
               </form>
+
+              {error && (
+                <span style={{ color: "red", marginTop: "15px" }}>
+                  Something went wrong!
+                </span>
+              )}
 
               <button
                 className="all-signin-btn"
@@ -199,7 +272,10 @@ function TopBar() {
           {step === 2 && (
             <div className="register-with-email">
               <h2>SignIn</h2>
-              <form className="register-with-email-form">
+              <form
+                className="register-with-email-form"
+                onSubmit={handleSubmitLogin}
+              >
                 <input
                   className="input-field"
                   type="text"
