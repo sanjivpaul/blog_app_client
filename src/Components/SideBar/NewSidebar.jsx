@@ -23,14 +23,14 @@ function NewSidebar() {
     <div className="newSidebar">
       {/* Message Dialog */}
       <div className="sidebarSection messageDialog">
-        <h3>Start Writing</h3>
+        <h3 className="newSideBarHeader">Start Writing</h3>
         <p>Share your thoughts with the world. Start your first post now!</p>
         <button className="startWritingBtn">Write Now</button>
       </div>
 
       {/* Recommendation Title - Topics */}
       <div className="sidebarSection">
-        <h3>Recommended Topics</h3>
+        <h3 className="newSideBarHeader">Recommended Topics</h3>
         <ul className="topicList">
           {topics.map((topic, index) => (
             <li key={index} className="topicItem">
@@ -42,7 +42,7 @@ function NewSidebar() {
 
       {/* User Follow Recommendations */}
       <div className="sidebarSection">
-        <h3>Who to Follow</h3>
+        <h3 className="newSideBarHeader">Who to Follow</h3>
         <ul className="userList">
           {users.map((user) => (
             <li key={user.id} className="userItem">

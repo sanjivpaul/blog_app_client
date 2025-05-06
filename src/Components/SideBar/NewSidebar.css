@@ -87,6 +87,14 @@
   .sidebarSection {
     margin-bottom: 24px;
   }
+
+  .newSideBarHeader{
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 15px;
+    cursor: pointer;
+  }
   
   /* Message Box */
   .messageDialog h3 {

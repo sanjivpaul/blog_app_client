@@ -26,8 +26,8 @@ export default function HomePage() {
     <>
       <div className="homePage">
         {/* <Header /> */}
-        <TopTabBar />
 
+        <TopTabBar />
         <div className="home">
           {/* pass posts as props */}
 

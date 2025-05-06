@@ -95,14 +95,27 @@
 
 
    .tabBarWrapper {
-    /* position: relative; */
     position: sticky; 
     top: 0;
     display: flex;
     align-items: center;
-    /* background-color: #f9f9f9; */
+    background-color: #f9f9f9;
     border-bottom: 1px solid #ccc;
   }
+
+  /* .tabBarWrapper {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05); 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+  } */
   
   .tabBarContainer {
     overflow-x: auto;
